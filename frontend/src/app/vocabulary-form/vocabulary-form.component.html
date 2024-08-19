@@ -1,0 +1,27 @@
+<div class="container">
+  <form [formGroup]="vocabularyForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Kanji" formControlName="kanji">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Furigana" formControlName="furigana">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Romanji" formControlName="romanji">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Meaning" formControlName="meaning">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Type" formControlName="type">
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="!vocabularyForm.valid">
+      {{ vocabularyId ? 'Update' : 'Add' }} Vocabulary
+    </button>
+  </form>
+</div>

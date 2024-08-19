@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>This is quizzz</h1>
+
+    <div *ngFor="let q of quiz; let cIndex = index">
+        <div>
+            <p>{{cIndex+1}}. {{q.question}}</p>
+
+            <mat-radio-group (change)="onSelectChangeHandler($event.value, cIndex)">
+              <mat-radio-button *ngFor="let choice of q.choices" [value]="choice">
+                {{ choice }}
+              </mat-radio-button>
+            </mat-radio-group>
+
+              <div *ngIf="selectedAnswer[cIndex] != ''">
+                <p *ngIf="selectedAnswer[cIndex] != q.correctAnswer" >Wrong answer.</p>
+                <p *ngIf="selectedAnswer[cIndex] == q.correctAnswer" >Nice.</p>
+              </div>
+        </div>
+        
+    </div>
+</div>

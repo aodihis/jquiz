@@ -1,0 +1,32 @@
+
+<div class="container">
+  <table mat-table [dataSource]="vocabulary" class="mat-elevation-z8">
+    <ng-container matColumnDef="kanji">
+      <th mat-header-cell *matHeaderCellDef> Kanji </th>
+      <td mat-cell *matCellDef="let element"> {{element.kanji}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="furigana">
+      <th mat-header-cell *matHeaderCellDef> Furigana </th>
+      <td mat-cell *matCellDef="let element"> {{element.furigana}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="romanji">
+      <th mat-header-cell *matHeaderCellDef> Romanji </th>
+      <td mat-cell *matCellDef="let element"> {{element.romanji}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="meaning">
+      <th mat-header-cell *matHeaderCellDef> Meaning </th>
+      <td mat-cell *matCellDef="let element"> {{element.meaning}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
