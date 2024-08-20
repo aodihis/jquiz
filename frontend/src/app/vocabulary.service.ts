@@ -22,8 +22,6 @@ export class VocabularyService {
   constructor(private http: HttpClient) { }
 
   getVocabulary(): Observable<Vocabulary[]> {
-    console.log(this.apiUrl);
-    
     return this.http.get<Vocabulary[]>(this.apiUrl);
   }
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get, Param, Delete, Put } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param, Delete, Put, UsePipes, ValidationPipe  } from '@nestjs/common';
 import { VocabularyService } from './vocabulary.service';
 import { Vocabulary } from './vocabulary.entity';
 
@@ -7,6 +7,7 @@ export class VocabularyController {
     constructor(private readonly vocabularyService: VocabularyService) {}
 
     @Post()
+    @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
     create(@Body() vocabulary: Vocabulary) {
         return this.vocabularyService.create(vocabulary)
     }

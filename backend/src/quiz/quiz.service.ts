@@ -15,7 +15,7 @@ export class QuizService {
         return n
     }
 
-    shuffle = (array: string[]) => { 
+    shuffle = <T>(array: T[]): T[] => { 
         for (let i = array.length - 1; i > 0; i--) { 
           const j = Math.floor(Math.random() * (i + 1)); 
           [array[i], array[j]] = [array[j], array[i]]; 
@@ -39,12 +39,12 @@ export class QuizService {
     async getQuiz(propertyQuestion: 'kanji' | 'furigana', propertyAnswer: 'meaning' | 'furigana') {
         const vocabularies = await this.vocabularyService.findAll();
         
-        return vocabularies.map((v, i) => {
+        return this.shuffle(vocabularies.filter(v => v[propertyQuestion] && v[propertyAnswer]).map((v, i) => {
             const choices = this.getRandomChoices(vocabularies, i, propertyAnswer);
             choices.splice(this.randomNumber(3), 0, v[propertyAnswer]);
             
             return new QuizModel(v[propertyQuestion], choices, v[propertyAnswer]);
-        });
+        }));
     }
 
     private getRandomChoices(vocabularies: any[], currentIndex: number, propertyKey: string): string[] {

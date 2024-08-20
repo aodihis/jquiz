@@ -26,7 +26,7 @@ export class VocabularyFormComponent implements OnInit {
     private router: Router
   ) {
     this.vocabularyForm = this.fb.group({
-      kanji: ['', Validators.required],
+      kanji: [''],
       furigana: ['', Validators.required],
       romanji: ['', Validators.required],
       meaning: ['', Validators.required],
